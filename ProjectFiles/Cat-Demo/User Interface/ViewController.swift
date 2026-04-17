@@ -5,6 +5,11 @@ class ViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     let viewModel = ViewModel()
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    private var isFiltering: Bool {
+        return !(searchController.searchBar.text?.isEmpty ?? true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,8 +17,27 @@ class ViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        navigationItem.searchController = searchController
+        
         self.viewModel.catDataDelegate = self
         self.viewModel.getBreeds()
+        self.setUpSearchBar()
+    }
+    
+    func setUpSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Breeds"
+    }
+}
+
+extension ViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else {
+            return
+        }
+
+        viewModel.searchCatBreeds(for: searchText)
     }
 }
 
@@ -21,7 +45,7 @@ class ViewController: UIViewController {
 // MARK: TableView Delegate Methods
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.catBreeds?.count ?? 0
+        return viewModel.getCatBreedList(isFiltering)?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,58 +53,43 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        cell.textLabel?.text = viewModel.catBreeds?[indexPath.row].name
+        let catBreed = viewModel.getCatBreedList(isFiltering)?[indexPath.row]
+
+        cell.textLabel?.text = catBreed?.name
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         
+        cell.detailTextLabel?.text = catBreed?.description
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        
+        cell.textLabel?.numberOfLines = 1
+        cell.detailTextLabel?.numberOfLines = 0
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
-        guard let cat = viewModel.catBreeds?[indexPath.row],
-              let catId = cat.id else {
-            return
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let catDetailsVC = storyboard.instantiateViewController(withIdentifier: "CatDetailsViewController") as? CatDetailsViewController {
+            let catBreed = viewModel.getCatBreedList(isFiltering)?[indexPath.row]
+            catDetailsVC.breed = catBreed
+            navigationController?.pushViewController(catDetailsVC, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let threshold = 2
+        let lastIndex = (viewModel.catBreeds?.count ?? 1) - 1
         
-        viewModel.getCatImage(breedId: catId)
+        guard indexPath.row >= lastIndex - threshold else { return }
+        viewModel.fetchNextPage()
     }
 }
 
-// MARK: -
 // MARK: Cat Data Model Delegate Methods
 extension ViewController: CatDataDelegate {
     func breedsChangedNotification() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
-        }
-    }
-    
-    func imageChangedNotification() {
-        DispatchQueue.main.async {
-            guard let row = self.tableView.indexPathForSelectedRow?.row else {
-                return
-            }
-            
-            guard let cat = self.viewModel.catBreeds?[row] else {
-                return
-            }
-            
-            let alert = UIAlertController(title: cat.name, message: nil, preferredStyle: .alert)
-            let imageView = UIImageView(frame: CGRect(x: 10.0, y: 50.0, width: 225, height: 225))
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = self.viewModel.catImage
-            
-            alert.view.addSubview(imageView)
-            
-            let height = NSLayoutConstraint(item: alert.view!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
-            let width = NSLayoutConstraint(item: alert.view!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
-            
-            alert.view.addConstraint(height)
-            alert.view.addConstraint(width)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-                self.tableView.reloadData()
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
         }
     }
 }

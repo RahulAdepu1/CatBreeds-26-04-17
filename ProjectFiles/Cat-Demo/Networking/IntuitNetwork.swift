@@ -2,8 +2,13 @@
 import Foundation
 import UIKit
 
+protocol Networkable{
+    func fetchCatBreeds(limit: Int, page: Int, completion: @escaping (Swift.Result<[CatBreed], Error>) -> Void)
+    func fetchCatImage(breedId: String, completion: @escaping (Swift.Result<UIImage, Error>) -> Void)
+}
+
 /// Network interface
-class Network {
+class Network: Networkable {
     
     /// Errors from network responses
     ///
@@ -17,19 +22,28 @@ class Network {
         case decodeError
     }
     
+    let urlsession: URLSession
+    init(urlsession: URLSession = .shared) {
+        self.urlsession = urlsession
+    }
+    
     /// FetchCatBreeds - retrieve a list of cat breeds from The Cat API
     ///
     /// - Parameter completion: Closure that returns CatBreed on success, an Error on failure
-    class func fetchCatBreeds(completion: @escaping (Swift.Result<[CatBreed], Error>) -> Void) {
+    func fetchCatBreeds(limit: Int, page: Int, completion: @escaping (Swift.Result<[CatBreed], Error>) -> Void) {
         
         /// Create the URL for the request
-        guard let url = URL(string: "https://api.thecatapi.com/v1/breeds?limit=10&page=0") else {
+        let baseURLString = "https://api.thecatapi.com"
+        let pathString = "/v1/breeds"
+        let queryString = "?limit=\(limit)&page=\(page)"
+        
+        guard let url = URL(string: baseURLString + pathString + queryString) else {
             let error = NSError(domain: "Network.fetchCats", code: NetworkError.badUrl.rawValue, userInfo: nil)
             return completion(Result.failure(error))
         }
         
         /// Start a data task for the URL
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
+        self.urlsession.dataTask(with: url) { (data, _, error) in
             /// Check against errors
             guard error == nil else {
                 let error = NSError(domain: "Network.fetchCats", code: NetworkError.responseError.rawValue, userInfo: nil)
@@ -63,14 +77,14 @@ class Network {
     /// - Parameters:
     ///   - breedId: The breed ID (retrieved from the `fetchCatBreeds` call
     ///   - completion: Returns a UIImage or Error
-    class func fetchCatImage(breedId: String, completion: @escaping (Swift.Result<UIImage, Error>) -> Void) {
+    func fetchCatImage(breedId: String, completion: @escaping (Swift.Result<UIImage, Error>) -> Void) {
 
         guard let url = URL(string: "https://api.thecatapi.com/v1/images/search?breed_ids=\(breedId)&include_breeds=true") else {
             let error = NSError(domain: "Network.fetchCatDetails", code: NetworkError.badUrl.rawValue, userInfo: nil)
             return completion(Result.failure(error))
         }
         
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
+        self.urlsession.dataTask(with: url) { (data, _, error) in
             guard error == nil else {
                 let error = NSError(domain: "Network.fetchCatDetails", code: NetworkError.responseError.rawValue, userInfo: nil)
                 return completion(Result.failure(error))

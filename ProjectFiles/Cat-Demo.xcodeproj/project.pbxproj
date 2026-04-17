@@ -18,6 +18,8 @@
 		3FFC571D2624118B00E6E5AE /* IntuitNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC571C2624118B00E6E5AE /* IntuitNetwork.swift */; };
 		3FFC5725262411B900E6E5AE /* CatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5724262411B900E6E5AE /* CatModels.swift */; };
 		3FFC572D262412DF00E6E5AE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC572C262412DF00E6E5AE /* ViewModel.swift */; };
+		DA1399042F92C16900503626 /* CatDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1399032F92C16900503626 /* CatDetailsViewController.swift */; };
+		DA1399062F92C24800503626 /* CatDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1399052F92C24800503626 /* CatDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		3FFC571C2624118B00E6E5AE /* IntuitNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntuitNetwork.swift; sourceTree = "<group>"; };
 		3FFC5724262411B900E6E5AE /* CatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModels.swift; sourceTree = "<group>"; };
 		3FFC572C262412DF00E6E5AE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		DA1399032F92C16900503626 /* CatDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsViewController.swift; sourceTree = "<group>"; };
+		DA1399052F92C24800503626 /* CatDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,8 @@
 				3FFC56F1262410DC00E6E5AE /* LaunchScreen.storyboard */,
 				3FFC56EC262410DC00E6E5AE /* Main.storyboard */,
 				3FFC56E8262410DC00E6E5AE /* SceneDelegate.swift */,
+				DA1399032F92C16900503626 /* CatDetailsViewController.swift */,
+				DA1399052F92C24800503626 /* CatDetailsViewModel.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -228,6 +234,7 @@
 				TargetAttributes = {
 					3FFC56E2262410DC00E6E5AE = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 2600;
 					};
 					3FFC56F8262410DC00E6E5AE = {
 						CreatedOnToolsVersion = 12.4;
@@ -291,11 +298,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1399042F92C16900503626 /* CatDetailsViewController.swift in Sources */,
 				3FFC5725262411B900E6E5AE /* CatModels.swift in Sources */,
 				3FFC56EB262410DC00E6E5AE /* ViewController.swift in Sources */,
 				3FFC56E7262410DC00E6E5AE /* AppDelegate.swift in Sources */,
 				3FFC571D2624118B00E6E5AE /* IntuitNetwork.swift in Sources */,
 				3FFC572D262412DF00E6E5AE /* ViewModel.swift in Sources */,
+				DA1399062F92C24800503626 /* CatDetailsViewModel.swift in Sources */,
 				3FFC56E9262410DC00E6E5AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,7 +481,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4P2C9WR2BJ;
 				INFOPLIST_FILE = "Cat-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -480,6 +491,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.intuit.Cat-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -490,7 +502,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4P2C9WR2BJ;
 				INFOPLIST_FILE = "Cat-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
