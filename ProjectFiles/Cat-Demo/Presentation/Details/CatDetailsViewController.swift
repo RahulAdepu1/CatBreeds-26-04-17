@@ -23,6 +23,7 @@ class CatDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel.catImageDelegate = self
+        self.viewModel.breed = breed
         setUpUI()
         
     }

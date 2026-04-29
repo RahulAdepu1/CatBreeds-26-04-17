@@ -20,6 +20,14 @@
 		3FFC572D262412DF00E6E5AE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC572C262412DF00E6E5AE /* ViewModel.swift */; };
 		DA1399042F92C16900503626 /* CatDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1399032F92C16900503626 /* CatDetailsViewController.swift */; };
 		DA1399062F92C24800503626 /* CatDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1399052F92C24800503626 /* CatDetailsViewModel.swift */; };
+		DAA29D692FA2A0DD00E7CFF0 /* CatDetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D682FA2A0DD00E7CFF0 /* CatDetailsRepository.swift */; };
+		DAA29D6D2FA2A1A300E7CFF0 /* CatDetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D6C2FA2A1A300E7CFF0 /* CatDetailsFactory.swift */; };
+		DAA29D702FA2A23300E7CFF0 /* CatDetailsViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D6F2FA2A23300E7CFF0 /* CatDetailsViewA.swift */; };
+		DAA29D732FA2A36500E7CFF0 /* CatDetailsViewB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D722FA2A36500E7CFF0 /* CatDetailsViewB.swift */; };
+		DAA29D772FA2A4DE00E7CFF0 /* CatDetailsViewModelNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D762FA2A4DE00E7CFF0 /* CatDetailsViewModelNew.swift */; };
+		DAA29D7F2FA2A75500E7CFF0 /* CatDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D7E2FA2A75500E7CFF0 /* CatDetailsUseCase.swift */; };
+		DAA29D812FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D802FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift */; };
+		DAA29D832FA2A8A200E7CFF0 /* CatDetailsRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D822FA2A8A200E7CFF0 /* CatDetailsRepositoryImplementation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +67,14 @@
 		3FFC572C262412DF00E6E5AE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		DA1399032F92C16900503626 /* CatDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsViewController.swift; sourceTree = "<group>"; };
 		DA1399052F92C24800503626 /* CatDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsViewModel.swift; sourceTree = "<group>"; };
+		DAA29D682FA2A0DD00E7CFF0 /* CatDetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsRepository.swift; sourceTree = "<group>"; };
+		DAA29D6C2FA2A1A300E7CFF0 /* CatDetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsFactory.swift; sourceTree = "<group>"; };
+		DAA29D6F2FA2A23300E7CFF0 /* CatDetailsViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsViewA.swift; sourceTree = "<group>"; };
+		DAA29D722FA2A36500E7CFF0 /* CatDetailsViewB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsViewB.swift; sourceTree = "<group>"; };
+		DAA29D762FA2A4DE00E7CFF0 /* CatDetailsViewModelNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsViewModelNew.swift; sourceTree = "<group>"; };
+		DAA29D7E2FA2A75500E7CFF0 /* CatDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsUseCase.swift; sourceTree = "<group>"; };
+		DAA29D802FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsUseCaseImplemention.swift; sourceTree = "<group>"; };
+		DAA29D822FA2A8A200E7CFF0 /* CatDetailsRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsRepositoryImplementation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,9 +125,10 @@
 		3FFC56E5262410DC00E6E5AE /* Cat-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				DAA29D7D2FA2A6E600E7CFF0 /* Data */,
+				DAA29D7B2FA2A68900E7CFF0 /* Domain */,
+				DAA29D782FA2A64000E7CFF0 /* Presentation */,
 				3FFC56F4262410DC00E6E5AE /* Info.plist */,
-				3FFC571B2624117800E6E5AE /* Data Models */,
-				3FFC571A2624116F00E6E5AE /* Networking */,
 				3FFC57192624115F00E6E5AE /* User Interface */,
 			);
 			path = "Cat-Demo";
@@ -140,13 +157,9 @@
 			children = (
 				3FFC56E6262410DC00E6E5AE /* AppDelegate.swift */,
 				3FFC56EF262410DC00E6E5AE /* Assets.xcassets */,
-				3FFC56EA262410DC00E6E5AE /* ViewController.swift */,
-				3FFC572C262412DF00E6E5AE /* ViewModel.swift */,
 				3FFC56F1262410DC00E6E5AE /* LaunchScreen.storyboard */,
 				3FFC56EC262410DC00E6E5AE /* Main.storyboard */,
 				3FFC56E8262410DC00E6E5AE /* SceneDelegate.swift */,
-				DA1399032F92C16900503626 /* CatDetailsViewController.swift */,
-				DA1399052F92C24800503626 /* CatDetailsViewModel.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -165,6 +178,89 @@
 				3FFC5724262411B900E6E5AE /* CatModels.swift */,
 			);
 			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		DAA29D662FA2A09400E7CFF0 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				DAA29D6C2FA2A1A300E7CFF0 /* CatDetailsFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		DAA29D672FA2A0A300E7CFF0 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DAA29D822FA2A8A200E7CFF0 /* CatDetailsRepositoryImplementation.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		DAA29D742FA2A3EE00E7CFF0 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				DAA29D7E2FA2A75500E7CFF0 /* CatDetailsUseCase.swift */,
+				DAA29D802FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		DAA29D782FA2A64000E7CFF0 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				DAA29D662FA2A09400E7CFF0 /* Factory */,
+				DAA29D7A2FA2A66000E7CFF0 /* Details */,
+				DAA29D792FA2A65900E7CFF0 /* List */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		DAA29D792FA2A65900E7CFF0 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				3FFC56EA262410DC00E6E5AE /* ViewController.swift */,
+				3FFC572C262412DF00E6E5AE /* ViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		DAA29D7A2FA2A66000E7CFF0 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				DAA29D762FA2A4DE00E7CFF0 /* CatDetailsViewModelNew.swift */,
+				DAA29D6F2FA2A23300E7CFF0 /* CatDetailsViewA.swift */,
+				DAA29D722FA2A36500E7CFF0 /* CatDetailsViewB.swift */,
+				DA1399032F92C16900503626 /* CatDetailsViewController.swift */,
+				DA1399052F92C24800503626 /* CatDetailsViewModel.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		DAA29D7B2FA2A68900E7CFF0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				DAA29D7C2FA2A6B000E7CFF0 /* RepositoryProtocol */,
+				3FFC571B2624117800E6E5AE /* Data Models */,
+				DAA29D742FA2A3EE00E7CFF0 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		DAA29D7C2FA2A6B000E7CFF0 /* RepositoryProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				DAA29D682FA2A0DD00E7CFF0 /* CatDetailsRepository.swift */,
+			);
+			path = RepositoryProtocol;
+			sourceTree = "<group>";
+		};
+		DAA29D7D2FA2A6E600E7CFF0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3FFC571A2624116F00E6E5AE /* Networking */,
+				DAA29D672FA2A0A300E7CFF0 /* Repository */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,12 +394,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA29D772FA2A4DE00E7CFF0 /* CatDetailsViewModelNew.swift in Sources */,
+				DAA29D7F2FA2A75500E7CFF0 /* CatDetailsUseCase.swift in Sources */,
 				DA1399042F92C16900503626 /* CatDetailsViewController.swift in Sources */,
 				3FFC5725262411B900E6E5AE /* CatModels.swift in Sources */,
+				DAA29D702FA2A23300E7CFF0 /* CatDetailsViewA.swift in Sources */,
 				3FFC56EB262410DC00E6E5AE /* ViewController.swift in Sources */,
+				DAA29D812FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift in Sources */,
+				DAA29D732FA2A36500E7CFF0 /* CatDetailsViewB.swift in Sources */,
+				DAA29D692FA2A0DD00E7CFF0 /* CatDetailsRepository.swift in Sources */,
+				DAA29D832FA2A8A200E7CFF0 /* CatDetailsRepositoryImplementation.swift in Sources */,
 				3FFC56E7262410DC00E6E5AE /* AppDelegate.swift in Sources */,
 				3FFC571D2624118B00E6E5AE /* IntuitNetwork.swift in Sources */,
 				3FFC572D262412DF00E6E5AE /* ViewModel.swift in Sources */,
+				DAA29D6D2FA2A1A300E7CFF0 /* CatDetailsFactory.swift in Sources */,
 				DA1399062F92C24800503626 /* CatDetailsViewModel.swift in Sources */,
 				3FFC56E9262410DC00E6E5AE /* SceneDelegate.swift in Sources */,
 			);

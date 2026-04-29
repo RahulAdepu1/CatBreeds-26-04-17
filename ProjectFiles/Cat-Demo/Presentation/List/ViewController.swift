@@ -68,12 +68,27 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let catDetailsVC = storyboard.instantiateViewController(withIdentifier: "CatDetailsViewController") as? CatDetailsViewController {
-            let catBreed = viewModel.getCatBreedList(isFiltering)?[indexPath.row]
-            catDetailsVC.breed = catBreed
-            navigationController?.pushViewController(catDetailsVC, animated: true)
-        }
+        
+        //navigation logic
+        
+        let repository = CatDetailsRepositoryImplementation(networkService: Network())
+        let isVariantA = true
+        
+        let catBreed = viewModel.getCatBreedList(isFiltering)?[indexPath.row]
+
+        let useCase = CatDetailsUseCaseImplemention(repository: repository)
+        let viewModel = CatDetailsViewModelNew(breed: catBreed, useCase: useCase)
+        
+        let detailsVC = CatDetailsFactory.makeView(isVariant: isVariantA, viewModel: viewModel)
+        navigationController?.pushViewController(detailsVC, animated: true)
+
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let catDetailsVC = storyboard.instantiateViewController(withIdentifier: "CatDetailsViewController") as? CatDetailsViewController {
+//            let catBreed = viewModel.getCatBreedList(isFiltering)?[indexPath.row]
+//            catDetailsVC.breed = catBreed
+//            navigationController?.pushViewController(catDetailsVC, animated: true)
+//        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

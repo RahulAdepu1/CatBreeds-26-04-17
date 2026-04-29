@@ -12,11 +12,11 @@ protocol CatImageDelegate {
     func imageChangedNotification()
 }
 
-final class CatDetailsViewModel {
+final class CatDetailsViewModel:ObservableObject {
     
     var catImageDelegate: CatImageDelegate?
     let networkService: Networkable
-    
+    @Published  var breed: CatBreed?
     /// Image of the cat
     var catImage: UIImage? {
         didSet {
