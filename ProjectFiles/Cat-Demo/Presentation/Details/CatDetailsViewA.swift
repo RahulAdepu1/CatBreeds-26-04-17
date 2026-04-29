@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct CatDetailsViewA: View {
     @ObservedObject var viewModel: CatDetailsViewModelNew
@@ -14,18 +15,19 @@ struct CatDetailsViewA: View {
         VStack{
             Text(viewModel.breed?.name ?? "No Name")
             Text(viewModel.breed?.description ?? "no description")
-            if let image = viewModel.image{
-                Image(uiImage: image)
+            if let imageData = viewModel.image,
+            let uiImage = UIImage(data: imageData){
+                Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
             }
             
-        }.background(.red)
-            .onAppear{
-                viewModel.getCatImage()
-            }
-        
+        }
+        .background(.red)
+        .onAppear{
+            viewModel.getCatImage()
+        }
     }
 }
 

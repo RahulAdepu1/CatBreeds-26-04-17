@@ -43,12 +43,13 @@ class CatDetailsViewController: UIViewController {
 
 extension CatDetailsViewController: CatImageDelegate {
     func imageChangedNotification() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.imageView.contentMode = .scaleAspectFit
-            self.imageView.image = self.viewModel.catImage
+            if let data = self.viewModel.catImage,
+                let uiImage = UIImage(data: data) {
+                self.imageView.image = uiImage
+            }
         }
     }
 }
-
-
-

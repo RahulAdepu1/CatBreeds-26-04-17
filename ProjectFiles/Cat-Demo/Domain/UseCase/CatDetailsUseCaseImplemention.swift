@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+
 // any anctions given by viewmodel and that we can get donee byt repository
 class CatDetailsUseCaseImplemention{
     
@@ -20,7 +20,7 @@ extension CatDetailsUseCaseImplemention: CatDetailsUseCase{
     func execute() -> CatBreed? {
         return nil
     }
-    func getCatImage(breedId: String, completion:@escaping (Result<UIImage, Error>) -> Void) {
+    func getCatImage(breedId: String, completion:@escaping (Result<Data, Error>) -> Void) {
         self.repository.getCatImageForDetailsDetaiils(breedId: breedId) { result in
             switch result
                    {

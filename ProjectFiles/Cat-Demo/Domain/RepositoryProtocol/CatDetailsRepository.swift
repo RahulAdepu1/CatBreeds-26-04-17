@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import UIKit
 
 protocol CatDetailsRepository{
     func getCatDetaiils() -> CatBreed?
-    func getCatImageForDetailsDetaiils(breedId: String, completion:@escaping (Result<UIImage, Error>) -> Void)
+    func getCatImageForDetailsDetaiils(breedId: String, completion:@escaping (Result<Data, Error>) -> Void)
 }

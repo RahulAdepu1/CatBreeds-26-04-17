@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 
 class CatDetailsRepositoryImplementation {
@@ -21,7 +20,7 @@ extension CatDetailsRepositoryImplementation:CatDetailsRepository{
         return nil
     }
     
-    func getCatImageForDetailsDetaiils(breedId: String, completion:@escaping (Result<UIImage, Error>) -> Void) {
+    func getCatImageForDetailsDetaiils(breedId: String, completion:@escaping (Result<Data, Error>) -> Void) {
         self.networkService.fetchCatImage(breedId: breedId)  { (result) in
                     switch result
                     {

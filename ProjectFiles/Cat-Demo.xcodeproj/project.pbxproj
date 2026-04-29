@@ -28,6 +28,7 @@
 		DAA29D7F2FA2A75500E7CFF0 /* CatDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D7E2FA2A75500E7CFF0 /* CatDetailsUseCase.swift */; };
 		DAA29D812FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D802FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift */; };
 		DAA29D832FA2A8A200E7CFF0 /* CatDetailsRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D822FA2A8A200E7CFF0 /* CatDetailsRepositoryImplementation.swift */; };
+		DAA29D852FA2BAE700E7CFF0 /* CatDetailsVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA29D842FA2BAE700E7CFF0 /* CatDetailsVariant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		DAA29D7E2FA2A75500E7CFF0 /* CatDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsUseCase.swift; sourceTree = "<group>"; };
 		DAA29D802FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsUseCaseImplemention.swift; sourceTree = "<group>"; };
 		DAA29D822FA2A8A200E7CFF0 /* CatDetailsRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsRepositoryImplementation.swift; sourceTree = "<group>"; };
+		DAA29D842FA2BAE700E7CFF0 /* CatDetailsVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailsVariant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 			children = (
 				DAA29D7E2FA2A75500E7CFF0 /* CatDetailsUseCase.swift */,
 				DAA29D802FA2A79000E7CFF0 /* CatDetailsUseCaseImplemention.swift */,
+				DAA29D842FA2BAE700E7CFF0 /* CatDetailsVariant.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				3FFC571D2624118B00E6E5AE /* IntuitNetwork.swift in Sources */,
 				3FFC572D262412DF00E6E5AE /* ViewModel.swift in Sources */,
 				DAA29D6D2FA2A1A300E7CFF0 /* CatDetailsFactory.swift in Sources */,
+				DAA29D852FA2BAE700E7CFF0 /* CatDetailsVariant.swift in Sources */,
 				DA1399062F92C24800503626 /* CatDetailsViewModel.swift in Sources */,
 				3FFC56E9262410DC00E6E5AE /* SceneDelegate.swift in Sources */,
 			);

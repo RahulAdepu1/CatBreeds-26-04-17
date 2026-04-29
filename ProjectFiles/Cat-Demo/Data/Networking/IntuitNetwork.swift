@@ -1,10 +1,9 @@
 // Copyright © 2021 Intuit, Inc. All rights reserved.
 import Foundation
-import UIKit
 
 protocol Networkable{
     func fetchCatBreeds(limit: Int, page: Int, completion: @escaping (Swift.Result<[CatBreed], Error>) -> Void)
-    func fetchCatImage(breedId: String, completion: @escaping (Swift.Result<UIImage, Error>) -> Void)
+    func fetchCatImage(breedId: String, completion: @escaping (Swift.Result<Data, Error>) -> Void)
 }
 
 /// Network interface
@@ -77,7 +76,7 @@ class Network: Networkable {
     /// - Parameters:
     ///   - breedId: The breed ID (retrieved from the `fetchCatBreeds` call
     ///   - completion: Returns a UIImage or Error
-    func fetchCatImage(breedId: String, completion: @escaping (Swift.Result<UIImage, Error>) -> Void) {
+    func fetchCatImage(breedId: String, completion: @escaping (Swift.Result<Data, Error>) -> Void) {
 
         guard let url = URL(string: "https://api.thecatapi.com/v1/images/search?breed_ids=\(breedId)&include_breeds=true") else {
             let error = NSError(domain: "Network.fetchCatDetails", code: NetworkError.badUrl.rawValue, userInfo: nil)
@@ -112,12 +111,12 @@ class Network: Networkable {
                 
                 let imageData = try Data(contentsOf: catImageUrl)
                 
-                guard let image = UIImage(data: imageData) else {
-                    let error = NSError(domain: "Network.fetchCatDetails", code: NetworkError.responseNoData.rawValue, userInfo: nil)
-                    return completion(Result.failure(error))
-                }
+//                guard let image = UIImage(data: imageData) else {
+//                    let error = NSError(domain: "Network.fetchCatDetails", code: NetworkError.responseNoData.rawValue, userInfo: nil)
+//                    return completion(Result.failure(error))
+//                }
                 
-                completion(.success(image))
+                completion(.success(imageData))
 
             } catch {
 

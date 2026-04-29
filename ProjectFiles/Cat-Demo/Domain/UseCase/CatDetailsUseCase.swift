@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import UIKit
 
 protocol CatDetailsUseCase{
     func execute() -> CatBreed?
 
-    func getCatImage(breedId: String, completion:@escaping (Result<UIImage, Error>) -> Void)
+    func getCatImage(breedId: String, completion:@escaping (Result<Data, Error>) -> Void)
 }

@@ -18,7 +18,7 @@ final class CatDetailsViewModel:ObservableObject {
     let networkService: Networkable
     @Published  var breed: CatBreed?
     /// Image of the cat
-    var catImage: UIImage? {
+    var catImage: Data? {
         didSet {
             self.catImageDelegate?.imageChangedNotification()
         }

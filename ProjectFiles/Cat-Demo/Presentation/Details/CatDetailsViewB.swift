@@ -14,7 +14,19 @@ struct CatDetailsViewB: View {
             VStack{
                 Text(viewModel.breed?.name ?? "No Name")
                 Text(viewModel.breed?.description ?? "no description")
-            }.background(.blue)
+                if let imageData = viewModel.image,
+                let uiImage = UIImage(data: imageData){
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                }
+                
+            }
+            .background(.blue)
+            .onAppear{
+                viewModel.getCatImage()
+            }
             
         }
 }

@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import UIKit
 
 class CatDetailsViewModelNew: ObservableObject{
     @Published var breed: CatBreed?
-    @Published var image: UIImage?
+    @Published var image: Data?
     
     let useCase: CatDetailsUseCase
     
@@ -21,12 +20,14 @@ class CatDetailsViewModelNew: ObservableObject{
     }
     
     @MainActor
-    func getCatImage(){
+    func getCatImage() {
         useCase.getCatImage(breedId: breed?.id ?? "1") { result in
             switch result
             {
             case .success(let image):
-                self.image = image
+                DispatchQueue.main.async {
+                    self.image = image
+                }
             case .failure(let error):
                 print(error)
                 
